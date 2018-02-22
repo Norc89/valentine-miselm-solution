@@ -15,12 +15,7 @@ This solution generate GeoJson with heart, arrow and 'love you' text. GeoJSON cr
   </tr>
 </table>
 
-<a href="GeoJSON Example">http://bl.ocks.org/d/04cb712c70b4e1d0889c25082518eed1>  
-
-### Example:
-
-<a href="GeoJSON Example">http://bl.ocks.org/d/04cb712c70b4e1d0889c25082518eed1>
-
+<a href="http://bl.ocks.org/d/04cb712c70b4e1d0889c25082518eed1">Example GeoJSON.io>
 
 	 
 ### Sample Usage
