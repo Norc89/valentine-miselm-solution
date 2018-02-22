@@ -2,6 +2,7 @@ package developers.are.we.valentineschallenge;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -15,7 +16,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
+import com.google.maps.android.data.geojson.GeoJsonPolygonStyle;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,11 +76,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         try {
             geoJSON = geoJson.toJSON();
             GeoJsonLayer layer = new GeoJsonLayer(mMap, geoJSON);
+            setColorsForGoogleMap(layer);
             layer.addLayerToMap();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+    }
+
+    private void setColorsForGoogleMap(GeoJsonLayer layer) {
+        for (GeoJsonFeature feature : layer.getFeatures()) {
+            GeoJsonPolygonStyle geoJsonPolygonStyle = new GeoJsonPolygonStyle();
+            geoJsonPolygonStyle.setFillColor(Color.parseColor("#bbfe0101"));
+            feature.setPolygonStyle(geoJsonPolygonStyle);
+        }
     }
 
 
